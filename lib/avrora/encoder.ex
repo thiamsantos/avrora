@@ -83,7 +83,7 @@ defmodule Avrora.Encoder do
 
     {:ok, decoded}
   rescue
-    error in ErlangError -> {:error, error.original}
+    error -> {:error, Exception.message(error)}
   end
 
   defp do_encode(schema, payload) do
@@ -95,6 +95,6 @@ defmodule Avrora.Encoder do
 
     {:ok, encoded}
   rescue
-    error in ErlangError -> {:error, error.original}
+    error -> {:error, Exception.message(error)}
   end
 end
